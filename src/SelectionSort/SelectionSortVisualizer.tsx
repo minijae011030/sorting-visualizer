@@ -54,7 +54,7 @@ const SelectionSortVisualizer = ({ arraySize }: { arraySize: number }) => {
       <button onClick={startSorting} disabled={sorting}>
         {sorting ? "정렬 중..." : "선택 정렬 시작"}
       </button>
-      <button onClick={handleReset}>다시 하기</button>
+      <button onClick={handleReset}>초기화</button>
     </div>
   );
 };

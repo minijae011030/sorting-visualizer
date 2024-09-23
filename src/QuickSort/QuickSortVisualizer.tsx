@@ -32,6 +32,11 @@ const QuickSortVisualizer = ({ arraySize }: { arraySize: number }) => {
     setTimeTaken(endTime - startTime);
   };
 
+  const handleReset = () => {
+    const newArray = generateRandomArray(arraySize, 1000);
+    setArray(newArray);
+  };
+
   return (
     <div>
       <h1>퀵 정렬 시각화</h1>
@@ -50,6 +55,7 @@ const QuickSortVisualizer = ({ arraySize }: { arraySize: number }) => {
       <button onClick={startSorting} disabled={sorting}>
         {sorting ? "정렬 중..." : "퀵 정렬 시작"}
       </button>
+      <button onClick={handleReset}>초기화</button>
     </div>
   );
 };
