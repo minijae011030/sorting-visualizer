@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import SelectionSortVisualizer from "./SelectionSort/SelectionSortVisualizer";
 import InsertionSortVisualizer from "./InsertionSort/InsertionSortVisualizer";
 import QuickSortVisualizer from "./QuickSort/QuickSortVisualizer";
+import HeapSortVisualizer from "./HeapSort/HeapSortVisualizer";
 
 const MainPage: React.FC = () => {
   const [arraySize, setArraySize] = useState<number>(300);
@@ -26,6 +27,7 @@ const MainPage: React.FC = () => {
       <SelectionSortVisualizer arraySize={arraySize} />
       <InsertionSortVisualizer arraySize={arraySize} />
       <QuickSortVisualizer arraySize={arraySize} />
+      <HeapSortVisualizer arraySize={arraySize} />
     </>
   );
 };

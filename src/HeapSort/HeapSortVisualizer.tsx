@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid } from "recharts";
-import selectionSort from "./selectionSort";
+import heapSort from "./heapSort";
 
 const generateRandomArray = (n: number, max: number) => {
   return Array.from({ length: n }, () => Math.floor(Math.random() * max));
 };
 
-const SelectionSortVisualizer = ({ arraySize }: { arraySize: number }) => {
+const HeapSortVisualizer = ({ arraySize }: { arraySize: number }) => {
   const [array, setArray] = useState<number[]>([]);
   const [sorting, setSorting] = useState(false);
   const [timeTaken, setTimeTaken] = useState<number | null>(null);
@@ -22,7 +22,7 @@ const SelectionSortVisualizer = ({ arraySize }: { arraySize: number }) => {
 
     const startTime = performance.now();
 
-    await selectionSort(array, setArray, 50);
+    await heapSort(array, setArray, 50);
 
     await new Promise((resolve) => setTimeout(resolve, 50));
 
@@ -32,14 +32,9 @@ const SelectionSortVisualizer = ({ arraySize }: { arraySize: number }) => {
     setTimeTaken(endTime - startTime);
   };
 
-  const handleReset = () => {
-    const newArray = generateRandomArray(arraySize, 1000);
-    setArray(newArray);
-  };
-
   return (
     <div>
-      <h1>선택 정렬 시각화</h1>
+      <h1>힙 정렬 시각화</h1>
       {timeTaken && <h2>정렬 시간: {timeTaken.toFixed(2)} ms</h2>}
       <BarChart
         width={800}
@@ -52,11 +47,10 @@ const SelectionSortVisualizer = ({ arraySize }: { arraySize: number }) => {
         <Bar dataKey="value" fill="#8884d8" />
       </BarChart>
       <button onClick={startSorting} disabled={sorting}>
-        {sorting ? "정렬 중..." : "선택 정렬 시작"}
+        {sorting ? "정렬 중..." : "힙 정렬 시작"}
       </button>
-      <button onClick={handleReset}>다시 하기</button>
     </div>
   );
 };
 
-export default SelectionSortVisualizer;
+export default HeapSortVisualizer;
