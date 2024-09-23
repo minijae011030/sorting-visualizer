@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import SelectionSortVisualizer from "./SelectionSort/SelectionSortVisualizer";
-import InsertionSortVisualizer from "./InsertionSort/InsertionSortVisualizer";
-import QuickSortVisualizer from "./QuickSort/QuickSortVisualizer";
-import HeapSortVisualizer from "./HeapSort/HeapSortVisualizer";
+
+import SortTable from "./SortTable";
+import selectionSort from "./method/selectionSort";
+import heapSort from "./method/heapSort";
+import quickSort from "./method/quickSort";
+import insertionSort from "./method/insertionSort";
 
 const MainPage: React.FC = () => {
   const [arraySize, setArraySize] = useState<number>(300);
@@ -24,10 +26,27 @@ const MainPage: React.FC = () => {
       <h1>배열의 크기에 따른 정렬 시각화 및 시간 측정</h1>
       <input value={inputValue} onChange={handleInput} name="arraySize" />
       <button onClick={applyArraySize}>배열 크기 적용</button>
-      <SelectionSortVisualizer arraySize={arraySize} />
-      <InsertionSortVisualizer arraySize={arraySize} />
-      <QuickSortVisualizer arraySize={arraySize} />
-      <HeapSortVisualizer arraySize={arraySize} />
+
+      <SortTable
+        arraySize={arraySize}
+        sortMethod="선택"
+        sortFunction={selectionSort}
+      />
+      <SortTable
+        arraySize={arraySize}
+        sortMethod="삽입"
+        sortFunction={insertionSort}
+      />
+      <SortTable
+        arraySize={arraySize}
+        sortMethod="퀵"
+        sortFunction={quickSort}
+      />
+      <SortTable
+        arraySize={arraySize}
+        sortMethod="힙"
+        sortFunction={heapSort}
+      />
     </>
   );
 };
