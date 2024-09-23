@@ -8,6 +8,8 @@ import selectionSort from "./method/selectionSort";
 import heapSort from "./method/heapSort";
 import quickSort from "./method/quickSort";
 import insertionSort from "./method/insertionSort";
+import radixSort from "./method/radixSort";
+import shellSort from "./method/shellSort";
 
 const MainPage: React.FC = () => {
   const [arraySize, setArraySize] = useState<number>(300);
@@ -32,6 +34,7 @@ const MainPage: React.FC = () => {
         배열의 크기에 따른 정렬 시각화 및 시간 측정
       </h1>
       <div className={styles.array_size_apply}>
+        <p>배열 크기: </p>
         <input
           value={inputValue}
           onChange={handleInput}
@@ -60,6 +63,16 @@ const MainPage: React.FC = () => {
         arraySize={arraySize}
         sortMethod="힙"
         sortFunction={heapSort}
+      />
+      <SortTable
+        arraySize={arraySize}
+        sortMethod="기수"
+        sortFunction={radixSort}
+      />
+      <SortTable
+        arraySize={arraySize}
+        sortMethod="셸"
+        sortFunction={shellSort}
       />
     </>
   );

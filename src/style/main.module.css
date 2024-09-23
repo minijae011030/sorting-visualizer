@@ -10,25 +10,24 @@
   gap: 30px;
   margin-bottom: 50px;
 
+  > p {
+    font-size: 15px;
+    margin-right: -20px;
+  }
   > input {
     outline: none;
-    border: none;
-    border-bottom: 1px solid black;
+
     font-size: 15px;
+    padding-left: 10px;
   }
 
   > button {
-    background-color: white;
-    border: 1px solid black;
+    background-color: black;
+    color: white;
     padding: 10px 20px;
     border-radius: 5px;
     width: 160px;
     transition: 0.3s ease;
-  }
-
-  > button:hover {
-    background-color: black;
-    color: white;
   }
 }
 
