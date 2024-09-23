@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 
+import styles from "./style/main.module.css";
+
 import SortTable from "./SortTable";
+
 import selectionSort from "./method/selectionSort";
 import heapSort from "./method/heapSort";
 import quickSort from "./method/quickSort";
@@ -18,14 +21,25 @@ const MainPage: React.FC = () => {
     const size = parseInt(inputValue, 10);
     if (!isNaN(size) && size > 0) {
       setArraySize(size);
+    } else {
+      alert("배열의 크기를 적어주세요!");
     }
   }
 
   return (
     <>
-      <h1>배열의 크기에 따른 정렬 시각화 및 시간 측정</h1>
-      <input value={inputValue} onChange={handleInput} name="arraySize" />
-      <button onClick={applyArraySize}>배열 크기 적용</button>
+      <h1 className={styles.main_title}>
+        배열의 크기에 따른 정렬 시각화 및 시간 측정
+      </h1>
+      <div className={styles.array_size_apply}>
+        <input
+          value={inputValue}
+          onChange={handleInput}
+          placeholder="배열 크기(정수)"
+          name="arraySize"
+        />
+        <button onClick={applyArraySize}>배열 크기 적용</button>
+      </div>
 
       <SortTable
         arraySize={arraySize}
