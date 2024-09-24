@@ -26,7 +26,11 @@ const MainPage: React.FC = () => {
   function applyArraySize() {
     const size = parseInt(inputValue, 10);
     if (!isNaN(size) && size > 0) {
-      setArraySize(size);
+      if (size > 1000) {
+        alert("1000 이하의 정수를 입력해주세요!");
+      } else {
+        setArraySize(size);
+      }
     } else {
       alert("배열의 크기를 적어주세요!");
     }
