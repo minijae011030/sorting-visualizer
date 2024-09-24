@@ -1,26 +1,86 @@
 [
   {
-    "method": "selection",
-    "code": "// 선택 정렬 함수\nvoid selectionSort(int* arr, int arr_len) {\n    // 배열의 마지막 요소부터 첫 번째 요소까지 반복\n    for (int i = arr_len - 1; i > 0; i--) {\n        int max_idx = i; // 현재 배열에서 최대값의 인덱스를 저장\n        // 배열의 처음부터 현재 위치까지 반복하며 최대값 탐색\n        for (int j = 0; j <  i; j++) {\n            if (arr[j] > arr[max_idx]) {\n                max_idx = j; // 최대값의 인덱스를 갱신\n            }\n        }\n\n        // 최대값이 현재 위치에 있는 값과 다르면 교환\n        if (max_idx != i) {\n            int tmp = arr[i];\n            arr[i] = arr[max_idx];\n            arr[max_idx] = tmp; // 최대값과 현재 값을 교환\n        }\n    }\n}\n"
+    "function": "selection",
+    "code": "// 선택 정렬 함수\nvoid selectionSort(int* arr, int arr_len) {\n    // 배열의 마지막 요소부터 첫 번째 요소까지 반복\n    for (int i = arr_len - 1; i > 0; i--) {\n        int max_idx = i; // 현재 배열에서 최대값의 인덱스를 저장\n        // 배열의 처음부터 현재 위치까지 반복하며 최대값 탐색\n        for (int j = 0; j <  i; j++) {\n            if (arr[j] > arr[max_idx]) {\n                max_idx = j; // 최대값의 인덱스를 갱신\n            }\n        }\n\n        // 최대값이 현재 위치에 있는 값과 다르면 교환\n        if (max_idx != i) {\n            int tmp = arr[i];\n            arr[i] = arr[max_idx];\n            arr[max_idx] = tmp; // 최대값과 현재 값을 교환\n        }\n    }\n}\n",
+    "description": [
+      "비교 기반의 제자리 정렬 알고리즘 중 하나",
+      "시간 복잡도: O(n^2)",
+      "최소한의 메모리 공간을 사용하지만, 속도가 느림"
+    ],
+    "method": [
+      "1. 배열에서 최소 또는 최대값을 찾아 현재 위치에 놓는다.",
+      "2. 나머지 배열에 대해 반복한다.",
+      "3. 배열이 정렬될 때까지 이 과정을 반복한다."
+    ]
   },
   {
-    "method": "insertion",
-    "code": "// 삽입 정렬 함수\nvoid insertionSort(int* arr, int arr_len) {\n    // 배열의 두 번째 요소부터 마지막 요소까지 반복\n    for (int i = 1; i < arr_len; i++) {\n        int key = arr[i]; // 현재 삽입할 값을 저장\n        int j = i - 1; // 정렬된 부분의 마지막 요소부터 비교 시작\n        \n        // key 값보다 큰 요소들을 오른쪽으로 이동\n        while (j >= 0 && arr[j] > key) {\n            arr[j + 1] = arr[j]; // 요소를 한 칸 오른쪽으로 이동\n            j--;\n        }\n        // key 값을 올바른 위치에 삽입\n        arr[j + 1] = key;\n    }\n}\n"
+    "function": "insertion",
+    "code": "// 삽입 정렬 함수\nvoid insertionSort(int* arr, int arr_len) {\n    // 배열의 두 번째 요소부터 마지막 요소까지 반복\n    for (int i = 1; i < arr_len; i++) {\n        int key = arr[i]; // 현재 삽입할 값을 저장\n        int j = i - 1; // 정렬된 부분의 마지막 요소부터 비교 시작\n        \n        // key 값보다 큰 요소들을 오른쪽으로 이동\n        while (j >= 0 && arr[j] > key) {\n            arr[j + 1] = arr[j]; // 요소를 한 칸 오른쪽으로 이동\n            j--;\n        }\n        // key 값을 올바른 위치에 삽입\n        arr[j + 1] = key;\n    }\n}\n",
+    "description": [
+      "데이터가 거의 정렬된 상태에서 빠른 성능을 보이는 제자리 정렬 알고리즘",
+      "시간 복잡도: O(n^2), 하지만 데이터가 거의 정렬되어 있을 때는 O(n)",
+      "직관적이고 간단한 알고리즘"
+    ],
+    "method": [
+      "1. 두 번째 요소부터 시작하여 현재 요소를 앞의 정렬된 부분과 비교한다.",
+      "2. 비교된 요소들을 오른쪽으로 밀어내고 현재 요소를 적절한 위치에 삽입한다.",
+      "3. 배열이 정렬될 때까지 반복한다."
+    ]
   },
   {
-    "method": "quick",
-    "code": "// 배열을 분할하는 함수 (피벗을 기준으로 배열을 두 부분으로 나눔)\nvoid heapify(int* arr, int n, int i) {\n    int largest = i;\n    int left = 2 * i + 1;\n    int right = 2 * i + 2;\n\n    // 왼쪽 자식이 루트보다 크다면 가장 큰 값을 왼쪽 자식으로 설정\n    if (left < n && arr[left] > arr[largest]) {\n        largest = left;\n    }\n\n    // 오른쪽 자식이 가장 큰 값보다 크다면 가장 큰 값을 오른쪽 자식으로 설정\n    if (right < n && arr[right] > arr[largest]) {\n        largest = right;\n    }\n\n    // 가장 큰 값이 루트가 아니라면 교환하고 힙 속성을 재정렬\n    if (largest != i) {\n        int temp = arr[i];\n        arr[i] = arr[largest];\n        arr[largest] = temp;\n\n        // 재귀적으로 힙 구조를 유지\n        heapify(arr, n, largest);\n    }\n}\n\n// 힙 정렬 메인 함수\nvoid heapSort(int* arr, int n) {\n    // 배열을 힙 구조로 변환 (최대 힙 생성)\n    for (int i = n / 2 - 1; i >= 0; i--) {\n        heapify(arr, n, i);\n    }\n\n    // 하나씩 요소를 힙에서 꺼내어 정렬\n    for (int i = n - 1; i > 0; i--) {\n        // 루트(가장 큰 값)와 마지막 요소를 교환\n        int temp = arr[0];\n        arr[0] = arr[i];\n        arr[i] = temp;\n\n        // 힙의 크기를 줄이고 힙 속성을 재정렬\n        heapify(arr, i, 0);\n    }\n}\n"
+    "function": "quick",
+    "code": "// 배열을 분할하는 함수 (피벗을 기준으로 배열을 두 부분으로 나눔)\nvoid heapify(int* arr, int n, int i) {\n    int largest = i;\n    int left = 2 * i + 1;\n    int right = 2 * i + 2;\n\n    // 왼쪽 자식이 루트보다 크다면 가장 큰 값을 왼쪽 자식으로 설정\n    if (left < n && arr[left] > arr[largest]) {\n        largest = left;\n    }\n\n    // 오른쪽 자식이 가장 큰 값보다 크다면 가장 큰 값을 오른쪽 자식으로 설정\n    if (right < n && arr[right] > arr[largest]) {\n        largest = right;\n    }\n\n    // 가장 큰 값이 루트가 아니라면 교환하고 힙 속성을 재정렬\n    if (largest != i) {\n        int temp = arr[i];\n        arr[i] = arr[largest];\n        arr[largest] = temp;\n\n        // 재귀적으로 힙 구조를 유지\n        heapify(arr, n, largest);\n    }\n}\n\n// 힙 정렬 메인 함수\nvoid heapSort(int* arr, int n) {\n    // 배열을 힙 구조로 변환 (최대 힙 생성)\n    for (int i = n / 2 - 1; i >= 0; i--) {\n        heapify(arr, n, i);\n    }\n\n    // 하나씩 요소를 힙에서 꺼내어 정렬\n    for (int i = n - 1; i > 0; i--) {\n        // 루트(가장 큰 값)와 마지막 요소를 교환\n        int temp = arr[0];\n        arr[0] = arr[i];\n        arr[i] = temp;\n\n        // 힙의 크기를 줄이고 힙 속성을 재정렬\n        heapify(arr, i, 0);\n    }\n}\n",
+    "description": [
+      "분할 정복 알고리즘을 기반으로 하는 매우 빠른 정렬 알고리즘",
+      "시간 복잡도: 평균 O(n log n), 최악의 경우 O(n^2)",
+      "일반적으로 가장 빠른 정렬 알고리즘 중 하나"
+    ],
+    "method": [
+      "1. 피벗을 선택하여 배열을 두 부분으로 나눈다.",
+      "2. 피벗보다 작은 요소는 왼쪽에, 큰 요소는 오른쪽에 배치한다.",
+      "3. 각각의 부분에 대해 재귀적으로 퀵 정렬을 수행한다."
+    ]
   },
   {
-    "method": "heap",
-    "code": "// 힙 구조를 유지하는 함수 (힙 정렬의 핵심 부분)\nvoid heapify(int* arr, int n, int i) {\n    int largest = i;\n    int left = 2 * i + 1;\n    int right = 2 * i + 2;  \n\n    // 왼쪽 자식이 루트보다 크다면 가장 큰 값을 왼쪽 자식으로 설정\n    if (left < n && arr[left] > arr[largest]) {\n        largest = left;\n    }\n\n    // 오른쪽 자식이 가장 큰 값보다 크다면 가장 큰 값을 오른쪽 자식으로 설정\n    if (right < n && arr[right] > arr[largest]) {\n        largest = right;\n    }\n\n    // 가장 큰 값이 루트가 아니라면 교환하고 힙 속성을 재정렬\n    if (largest != i) {\n        int temp = arr[i];\n        arr[i] = arr[largest];\n        arr[largest] = temp;\n\n        // 재귀적으로 힙 구조를 유지\n        heapify(arr, n, largest);\n    }\n}\n\n// 힙 정렬 메인 함수\nvoid heapSort(int* arr, int n) {\n    // 배열을 힙 구조로 변환 (최대 힙 생성)\n    for (int i = n / 2 - 1; i >= 0; i--) {\n        heapify(arr, n, i);\n    }\n\n    // 하나씩 요소를 힙에서 꺼내어 정렬\n    for (int i = n - 1; i > 0; i--) {\n        // 루트(가장 큰 값)와 마지막 요소를 교환\n        int temp = arr[0];\n        arr[0] = arr[i];\n        arr[i] = temp;\n\n        // 힙의 크기를 줄이고 힙 속성을 재정렬\n        heapify(arr, i, 0);\n    }\n}\n"
+    "function": "heap",
+    "code": "// 힙 구조를 유지하는 함수 (힙 정렬의 핵심 부분)\nvoid heapify(int* arr, int n, int i) {\n    int largest = i;\n    int left = 2 * i + 1;\n    int right = 2 * i + 2;  \n\n    // 왼쪽 자식이 루트보다 크다면 가장 큰 값을 왼쪽 자식으로 설정\n    if (left < n && arr[left] > arr[largest]) {\n        largest = left;\n    }\n\n    // 오른쪽 자식이 가장 큰 값보다 크다면 가장 큰 값을 오른쪽 자식으로 설정\n    if (right < n && arr[right] > arr[largest]) {\n        largest = right;\n    }\n\n    // 가장 큰 값이 루트가 아니라면 교환하고 힙 속성을 재정렬\n    if (largest != i) {\n        int temp = arr[i];\n        arr[i] = arr[largest];\n        arr[largest] = temp;\n\n        // 재귀적으로 힙 구조를 유지\n        heapify(arr, n, largest);\n    }\n}\n\n// 힙 정렬 메인 함수\nvoid heapSort(int* arr, int n) {\n    // 배열을 힙 구조로 변환 (최대 힙 생성)\n    for (int i = n / 2 - 1; i >= 0; i--) {\n        heapify(arr, n, i);\n    }\n\n    // 하나씩 요소를 힙에서 꺼내어 정렬\n    for (int i = n - 1; i > 0; i--) {\n        // 루트(가장 큰 값)와 마지막 요소를 교환\n        int temp = arr[0];\n        arr[0] = arr[i];\n        arr[i] = temp;\n\n        // 힙의 크기를 줄이고 힙 속성을 재정렬\n        heapify(arr, i, 0);\n    }\n}\n",
+    "description": [
+      "완전 이진 트리 구조를 사용한 정렬 알고리즘",
+      "시간 복잡도: O(n log n)",
+      "균일한 성능을 보이는 안정적인 정렬 알고리즘"
+    ],
+    "method": [
+      "1. 배열을 최대 힙 구조로 만든다.",
+      "2. 루트(최대값)를 배열의 끝과 교환한다.",
+      "3. 배열의 크기를 줄이고 힙 속성을 재정렬하여 반복한다."
+    ]
   },
   {
-    "method": "radix",
-    "code": "// 최대값을 구하는 함수\nint getMax(int* arr, int n) {\n    int max = arr[0];\n    for (int i = 1; i < n; i++) {\n        if (arr[i] > max) {\n            max = arr[i];\n        }\n    }\n    return max;\n}\n\n// 특정 자릿수에 대해 계수 정렬을 수행하는 함수\nvoid countSort(int* arr, int n, int exp) {\n    int output[n]; // 결과 배열\n    int count[10] = {0}; // 자릿수에 따른 카운트 배열\n\n    // 자릿수에 따라 count 배열에 저장\n    for (int i = 0; i < n; i++) {\n        count[(arr[i] / exp) % 10]++;\n    }\n\n    // count 배열을 업데이트하여 실제 위치 계산\n    for (int i = 1; i < 10; i++) {\n        count[i] += count[i - 1];\n    }\n\n    // 출력 배열을 작성\n    for (int i = n - 1; i >= 0; i--) {\n        output[count[(arr[i] / exp) % 10] - 1] = arr[i];\n        count[(arr[i] / exp) % 10]--;\n    }\n\n    // 원래 배열에 정렬된 결과 복사\n    for (int i = 0; i < n; i++) {\n        arr[i] = output[i];\n    }\n}\n\n// 기수 정렬 메인 함수\nvoid radixSort(int* arr, int n) {\n    // 배열에서 최대값을 구함\n    int max = getMax(arr, n);\n\n    // 자릿수별로 계수 정렬 수행\n    for (int exp = 1; max / exp > 0; exp *= 10) {\n        countSort(arr, n, exp);\n    }\n}"
+    "function": "radix",
+    "code": "// 최대값을 구하는 함수\nint getMax(int* arr, int n) {\n    int max = arr[0];\n    for (int i = 1; i < n; i++) {\n        if (arr[i] > max) {\n            max = arr[i];\n        }\n    }\n    return max;\n}\n\n// 특정 자릿수에 대해 계수 정렬을 수행하는 함수\nvoid countSort(int* arr, int n, int exp) {\n    int output[n]; // 결과 배열\n    int count[10] = {0}; // 자릿수에 따른 카운트 배열\n\n    // 자릿수에 따라 count 배열에 저장\n    for (int i = 0; i < n; i++) {\n        count[(arr[i] / exp) % 10]++;\n    }\n\n    // count 배열을 업데이트하여 실제 위치 계산\n    for (int i = 1; i < 10; i++) {\n        count[i] += count[i - 1];\n    }\n\n    // 출력 배열을 작성\n    for (int i = n - 1; i >= 0; i--) {\n        output[count[(arr[i] / exp) % 10] - 1] = arr[i];\n        count[(arr[i] / exp) % 10]--;\n    }\n\n    // 원래 배열에 정렬된 결과 복사\n    for (int i = 0; i < n; i++) {\n        arr[i] = output[i];\n    }\n}\n\n// 기수 정렬 메인 함수\nvoid radixSort(int* arr, int n) {\n    // 배열에서 최대값을 구함\n    int max = getMax(arr, n);\n\n    // 자릿수별로 계수 정렬 수행\n    for (int exp = 1; max / exp > 0; exp *= 10) {\n        countSort(arr, n, exp);\n    }\n}",
+    "description": [
+      "비교 기반이 아닌 정렬 알고리즘으로, 숫자를 자릿수별로 분류하여 정렬",
+      "시간 복잡도: O(nk), 여기서 k는 자릿수의 개수",
+      "숫자 정렬에 매우 효율적이며, 특히 데이터 범위가 좁을 때 유리"
+    ],
+    "method": [
+      "1. 배열에서 가장 큰 숫자를 찾아 자릿수를 확인한다.",
+      "2. 자릿수별로 계수 정렬을 수행한다.",
+      "3. 모든 자릿수에 대해 정렬을 반복한다."
+    ]
   },
   {
-    "method": "shell",
-    "code": "// 셸 정렬 함수\nvoid shellSort(int* arr, int n) {\n    // 초기 간격을 배열 크기의 절반으로 설정\n    for (int gap = n / 2; gap > 0; gap /= 2) {\n        // 간격에 따라 삽입 정렬 수행\n        for (int i = gap; i < n; i++) {\n            int temp = arr[i];\n            int j;\n            // 삽입 정렬의 한 부분\n            for (j = i; j >= gap && arr[j - gap] > temp; j -= gap) {\n                arr[j] = arr[j - gap];\n            }\n            arr[j] = temp;\n        }\n    }\n}\n"
+    "function": "shell",
+    "code": "// 셸 정렬 함수\nvoid shellSort(int* arr, int n) {\n    // 초기 간격을 배열 크기의 절반으로 설정\n    for (int gap = n / 2; gap > 0; gap /= 2) {\n        // 간격에 따라 삽입 정렬 수행\n        for (int i = gap; i < n; i++) {\n            int temp = arr[i];\n            int j;\n            // 삽입 정렬의 한 부분\n            for (j = i; j >= gap && arr[j - gap] > temp; j -= gap) {\n                arr[j] = arr[j - gap];\n            }\n            arr[j] = temp;\n        }\n    }\n}\n",
+    "description": [
+      "삽입 정렬의 일반화된 버전으로, 일정한 간격을 두고 배열을 정렬",
+      "시간 복잡도: 최선의 경우 O(n log n), 일반적으로 O(n^(3/2))",
+      "간격을 줄여가면서 정렬하기 때문에 삽입 정렬보다 효율적"
+    ],
+    "method": [
+      "1. 배열을 일정한 간격으로 나누어 삽입 정렬을 수행한다.",
+      "2. 간격을 줄여가면서 정렬을 반복한다.",
+      "3. 간격이 1이 될 때까지 반복하여 완전히 정렬된 배열을 얻는다."
+    ]
   }
 ]

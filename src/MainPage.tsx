@@ -57,36 +57,48 @@ const MainPage: React.FC = () => {
         sortMethod="선택"
         sortFunction={selectionSort}
         code={code[0].code}
+        description={code[0].description}
+        method={code[0].method}
       />
       <SortTable
         arraySize={arraySize}
         sortMethod="삽입"
         sortFunction={insertionSort}
         code={code[1].code}
+        description={code[1].description}
+        method={code[1].method}
       />
       <SortTable
         arraySize={arraySize}
         sortMethod="퀵"
         sortFunction={quickSort}
         code={code[2].code}
+        description={code[2].description}
+        method={code[2].method}
       />
       <SortTable
         arraySize={arraySize}
         sortMethod="힙"
         sortFunction={heapSort}
         code={code[3].code}
+        description={code[3].description}
+        method={code[3].method}
       />
       <SortTable
         arraySize={arraySize}
         sortMethod="기수"
         sortFunction={radixSort}
         code={code[4].code}
+        description={code[4].description}
+        method={code[4].method}
       />
       <SortTable
         arraySize={arraySize}
         sortMethod="셸"
         sortFunction={shellSort}
         code={code[5].code}
+        description={code[5].description}
+        method={code[5].method}
       />
     </>
   );

@@ -86,10 +86,25 @@
   margin: 0 auto;
 }
 
-.code {
+.description_box {
   width: 97%;
   max-width: 740px;
   margin: 30px auto 0 auto;
+
+  .description_title {
+    margin-left: 20px;
+    font-weight: 500;
+    font-size: 17px;
+    margin-top: 40px;
+  }
+
+  .description {
+    margin-left: 20px;
+  }
+
+  .list {
+    margin-left: 24px;
+  }
 
   > pre {
     margin-left: 20px;

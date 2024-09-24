@@ -9,6 +9,8 @@ interface SortTableProps {
   sortMethod: string;
   sortFunction: (arr: number[], setArray: any, speed: number) => void;
   code: string;
+  description: string[];
+  method: string[];
 }
 
 const generateRandomArray = (n: number, max: number) => {
@@ -20,6 +22,8 @@ const SortTable: React.FC<SortTableProps> = ({
   sortMethod,
   sortFunction,
   code,
+  description,
+  method,
 }) => {
   const [array, setArray] = useState<number[]>([]);
   const [sorting, setSorting] = useState(false);
@@ -92,7 +96,24 @@ const SortTable: React.FC<SortTableProps> = ({
           {isToggleOpened ? "설명 닫기" : "설명 보기"}
         </p>
       </button>
-      <div className={isToggleOpened ? styles.code : styles.hidden}>
+      <div className={isToggleOpened ? styles.description_box : styles.hidden}>
+        <p className={styles.description_title}>{sortMethod}정렬 이란?</p>
+        {description.map((des, index) => {
+          return (
+            <p className={styles.description} key={index}>
+              {des}
+            </p>
+          );
+        })}
+        <p className={styles.description_title}>{sortMethod}정렬 방법</p>
+        {method.map((met, index) => {
+          return (
+            <p className={styles.list} key={index}>
+              {met}
+            </p>
+          );
+        })}
+        <p className={styles.description_title}>{sortMethod} 정렬 코드</p>
         <pre>
           <code className="language-c">{code}</code>
         </pre>
