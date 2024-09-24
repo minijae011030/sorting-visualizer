@@ -29,8 +29,10 @@ const SortTable: React.FC<SortTableProps> = ({
   const [sorting, setSorting] = useState(false);
   const [timeTaken, setTimeTaken] = useState<number | null>(null);
   const [isToggleOpened, setIsToggleOpened] = useState<boolean>(false);
+  const [isReseted, setIsReseted] = useState<boolean>(true);
 
   const startSorting = async () => {
+    setIsReseted(false);
     setSorting(true);
     setTimeTaken(null);
 
@@ -47,6 +49,7 @@ const SortTable: React.FC<SortTableProps> = ({
   };
 
   const handleReset = () => {
+    setIsReseted(true);
     const newArray = generateRandomArray(arraySize, 1000);
     setArray(newArray);
   };
@@ -79,10 +82,20 @@ const SortTable: React.FC<SortTableProps> = ({
         </BarChart>
       </div>
       <div className={styles.button_box}>
-        <button onClick={startSorting} disabled={sorting}>
+        <button
+          className={!isReseted ? styles.hidden : styles.button}
+          onClick={startSorting}
+          disabled={sorting}
+        >
           {sorting ? "정렬 중..." : `${sortMethod} 정렬 시작`}
         </button>
-        <button onClick={handleReset}>초기화</button>
+        <button
+          className={isReseted ? styles.hidden : styles.button}
+          onClick={handleReset}
+          disabled={sorting}
+        >
+          초기화
+        </button>
       </div>
       <button className={styles.toggle_button} onClick={handleToggle}>
         <p className={styles.toggle_open_button}>
