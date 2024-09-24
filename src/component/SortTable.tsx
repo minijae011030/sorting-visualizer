@@ -11,6 +11,7 @@ interface SortTableProps {
   code: string;
   description: string[];
   method: string[];
+  isMobileScreen: boolean;
 }
 
 const generateRandomArray = (n: number, max: number) => {
@@ -24,6 +25,7 @@ const SortTable: React.FC<SortTableProps> = ({
   code,
   description,
   method,
+  isMobileScreen,
 }) => {
   const [array, setArray] = useState<number[]>([]);
   const [sorting, setSorting] = useState(false);
@@ -69,7 +71,7 @@ const SortTable: React.FC<SortTableProps> = ({
       <div className={styles.sorting_time}>
         {timeTaken && <h2>정렬 시간: {timeTaken.toFixed(2)} ms</h2>}
       </div>
-      <div className={styles.chart}>
+      <div className={isMobileScreen ? styles.mobile_chart : styles.chart}>
         <BarChart
           width={800}
           height={400}

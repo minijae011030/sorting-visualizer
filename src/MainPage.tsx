@@ -18,6 +18,11 @@ import shellSort from "./method/shellSort";
 const MainPage: React.FC = () => {
   const [arraySize, setArraySize] = useState<number>(300);
   const [inputValue, setInputValue] = useState<string>("300");
+  const [isMobileScreen, setIsMobileScreen] = useState<boolean>(false);
+
+  function handleResize() {
+    setIsMobileScreen(window.innerWidth <= 500);
+  }
 
   function handleInput(event: React.ChangeEvent<HTMLInputElement>) {
     setInputValue(event.target.value);
@@ -38,14 +43,27 @@ const MainPage: React.FC = () => {
 
   useEffect(() => {
     hljs.highlightAll();
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   });
 
   return (
     <>
-      <h1 className={styles.main_title}>
+      <h1
+        className={
+          isMobileScreen ? styles.mobile_main_title : styles.main_title
+        }
+      >
         배열의 크기에 따른 정렬 시각화 및 시간 측정
       </h1>
-      <div className={styles.array_size_apply}>
+      <div
+        className={
+          isMobileScreen
+            ? styles.mobile_screen_array_size_apply
+            : styles.array_size_apply
+        }
+      >
         <p>배열 크기: </p>
         <input
           value={inputValue}
@@ -63,6 +81,7 @@ const MainPage: React.FC = () => {
         code={code[0].code}
         description={code[0].description}
         method={code[0].method}
+        isMobileScreen={isMobileScreen}
       />
       <SortTable
         arraySize={arraySize}
@@ -71,6 +90,7 @@ const MainPage: React.FC = () => {
         code={code[1].code}
         description={code[1].description}
         method={code[1].method}
+        isMobileScreen={isMobileScreen}
       />
       <SortTable
         arraySize={arraySize}
@@ -79,6 +99,7 @@ const MainPage: React.FC = () => {
         code={code[2].code}
         description={code[2].description}
         method={code[2].method}
+        isMobileScreen={isMobileScreen}
       />
       <SortTable
         arraySize={arraySize}
@@ -87,6 +108,7 @@ const MainPage: React.FC = () => {
         code={code[3].code}
         description={code[3].description}
         method={code[3].method}
+        isMobileScreen={isMobileScreen}
       />
       <SortTable
         arraySize={arraySize}
@@ -95,6 +117,7 @@ const MainPage: React.FC = () => {
         code={code[4].code}
         description={code[4].description}
         method={code[4].method}
+        isMobileScreen={isMobileScreen}
       />
       <SortTable
         arraySize={arraySize}
@@ -103,6 +126,7 @@ const MainPage: React.FC = () => {
         code={code[5].code}
         description={code[5].description}
         method={code[5].method}
+        isMobileScreen={isMobileScreen}
       />
     </>
   );
