@@ -87,14 +87,14 @@ const SortTable: React.FC<SortTableProps> = ({
           onClick={startSorting}
           disabled={sorting}
         >
-          {sorting ? "정렬 중..." : `${sortMethod} 정렬 시작`}
+          {`${sortMethod} 정렬 시작`}
         </button>
         <button
           className={isReseted ? styles.hidden : styles.button}
           onClick={handleReset}
           disabled={sorting}
         >
-          초기화
+          {sorting ? "정렬 중..." : `초기화`}
         </button>
       </div>
       <button className={styles.toggle_button} onClick={handleToggle}>
