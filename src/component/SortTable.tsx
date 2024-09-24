@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid } from "recharts";
 
 import styles from "../style/main.module.css";
+import arrow from "../image/downarrow.png";
 
 interface SortTableProps {
   arraySize: number;
@@ -23,11 +24,7 @@ const SortTable: React.FC<SortTableProps> = ({
   const [array, setArray] = useState<number[]>([]);
   const [sorting, setSorting] = useState(false);
   const [timeTaken, setTimeTaken] = useState<number | null>(null);
-
-  useEffect(() => {
-    const newArray = generateRandomArray(arraySize, 1000);
-    setArray(newArray);
-  }, [arraySize]);
+  const [isToggleOpened, setIsToggleOpened] = useState<boolean>(false);
 
   const startSorting = async () => {
     setSorting(true);
@@ -49,6 +46,15 @@ const SortTable: React.FC<SortTableProps> = ({
     const newArray = generateRandomArray(arraySize, 1000);
     setArray(newArray);
   };
+
+  const handleToggle = () => {
+    setIsToggleOpened((prev) => !prev);
+  };
+
+  useEffect(() => {
+    const newArray = generateRandomArray(arraySize, 1000);
+    setArray(newArray);
+  }, [arraySize]);
 
   return (
     <div className={styles.table_box}>
@@ -74,7 +80,19 @@ const SortTable: React.FC<SortTableProps> = ({
         </button>
         <button onClick={handleReset}>초기화</button>
       </div>
-      <div className={styles.code}>
+      <button className={styles.toggle_button} onClick={handleToggle}>
+        <p className={styles.toggle_open_button}>
+          <img
+            className={
+              isToggleOpened ? styles.opened_arrow : styles.closed_arrow
+            }
+            src={arrow}
+            alt="arrow"
+          />
+          {isToggleOpened ? "설명 닫기" : "설명 보기"}
+        </p>
+      </button>
+      <div className={isToggleOpened ? styles.code : styles.hidden}>
         <pre>
           <code className="language-c">{code}</code>
         </pre>

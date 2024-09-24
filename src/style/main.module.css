@@ -79,6 +79,13 @@
   }
 }
 
+.toggle_button {
+  background-color: white;
+  border: none;
+  width: 100px;
+  margin: 0 auto;
+}
+
 .code {
   width: 97%;
   max-width: 740px;
@@ -89,4 +96,21 @@
     line-height: 20px;
     font-size: 16px;
   }
+}
+
+.hidden {
+  display: none;
+}
+
+.opened_arrow {
+  width: 10px;
+  margin-right: 5px;
+  transform: rotate(180deg);
+  transition: 1s ease;
+}
+
+.closed_arrow {
+  width: 10px;
+  margin-right: 5px;
+  transition: 1s ease;
 }
