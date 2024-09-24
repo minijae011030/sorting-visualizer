@@ -1,8 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import styles from "./style/main.module.css";
+import code from "./code/code.json";
 
-import SortTable from "./SortTable";
+import hljs from "highlight.js";
+import "highlight.js/styles/atom-one-dark-reasonable.css";
+
+import SortTable from "./component/SortTable";
 
 import selectionSort from "./method/selectionSort";
 import heapSort from "./method/heapSort";
@@ -28,6 +32,10 @@ const MainPage: React.FC = () => {
     }
   }
 
+  useEffect(() => {
+    hljs.highlightAll();
+  });
+
   return (
     <>
       <h1 className={styles.main_title}>
@@ -48,31 +56,37 @@ const MainPage: React.FC = () => {
         arraySize={arraySize}
         sortMethod="선택"
         sortFunction={selectionSort}
+        code={code[0].code}
       />
       <SortTable
         arraySize={arraySize}
         sortMethod="삽입"
         sortFunction={insertionSort}
+        code={code[1].code}
       />
       <SortTable
         arraySize={arraySize}
         sortMethod="퀵"
         sortFunction={quickSort}
+        code={code[2].code}
       />
       <SortTable
         arraySize={arraySize}
         sortMethod="힙"
         sortFunction={heapSort}
+        code={code[3].code}
       />
       <SortTable
         arraySize={arraySize}
         sortMethod="기수"
         sortFunction={radixSort}
+        code={code[4].code}
       />
       <SortTable
         arraySize={arraySize}
         sortMethod="셸"
         sortFunction={shellSort}
+        code={code[5].code}
       />
     </>
   );

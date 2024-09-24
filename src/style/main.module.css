@@ -16,7 +16,6 @@
   }
   > input {
     outline: none;
-
     font-size: 15px;
     padding-left: 10px;
   }
@@ -41,14 +40,12 @@
 
 .title {
   text-align: center;
-  margin-left: 15px;
 }
 
 .sorting_time {
   height: 50px;
   margin-top: -25px;
   margin-bottom: 30px;
-  margin-left: 15px;
 
   > h2 {
     text-align: center;
@@ -79,5 +76,17 @@
   > button:hover {
     background-color: black;
     color: white;
+  }
+}
+
+.code {
+  width: 97%;
+  max-width: 740px;
+  margin: 30px auto 0 auto;
+
+  > pre {
+    margin-left: 20px;
+    line-height: 20px;
+    font-size: 16px;
   }
 }

@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid } from "recharts";
 
-import styles from "./style/main.module.css";
+import styles from "../style/main.module.css";
 
 interface SortTableProps {
   arraySize: number;
   sortMethod: string;
   sortFunction: (arr: number[], setArray: any, speed: number) => void;
+  code: string;
 }
 
 const generateRandomArray = (n: number, max: number) => {
@@ -17,6 +18,7 @@ const SortTable: React.FC<SortTableProps> = ({
   arraySize,
   sortMethod,
   sortFunction,
+  code,
 }) => {
   const [array, setArray] = useState<number[]>([]);
   const [sorting, setSorting] = useState(false);
@@ -71,6 +73,11 @@ const SortTable: React.FC<SortTableProps> = ({
           {sorting ? "정렬 중..." : `${sortMethod} 정렬 시작`}
         </button>
         <button onClick={handleReset}>초기화</button>
+      </div>
+      <div className={styles.code}>
+        <pre>
+          <code className="language-c">{code}</code>
+        </pre>
       </div>
     </div>
   );
