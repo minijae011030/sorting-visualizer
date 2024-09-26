@@ -83,7 +83,11 @@ const SortTable: React.FC<SortTableProps> = ({
           <Bar dataKey="value" fill="#8884d8" />
         </BarChart>
       </div>
-      <div className={styles.button_box}>
+      <div
+        className={
+          isMobileScreen ? styles.mobile_button_box : styles.button_box
+        }
+      >
         <button
           className={!isReseted ? styles.hidden : styles.button}
           onClick={startSorting}
