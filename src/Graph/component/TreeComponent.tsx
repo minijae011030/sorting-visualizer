@@ -2,6 +2,7 @@ import React, { useRef, useEffect } from "react";
 import { Network } from "vis-network";
 import { BFS } from "../method/BFS";
 import { DFS } from "../method/DFS";
+
 interface TreeComponentProps {
   algorithm: string;
 }
@@ -92,7 +93,7 @@ const TreeComponent: React.FC<TreeComponentProps> = ({ algorithm }) => {
         if (clickedNodes.length > 0) {
           const startNode = clickedNodes[0];
           const order =
-            algorithm === "bfs" ? BFS(graph, startNode) : DFS(graph, startNode);
+            algorithm === "BFS" ? BFS(graph, startNode) : DFS(graph, startNode);
           visualizeSearch(order, network);
         }
       });
@@ -102,7 +103,7 @@ const TreeComponent: React.FC<TreeComponentProps> = ({ algorithm }) => {
 
   // 단계별 시각화 함수
   const visualizeSearch = (order: number[], network: Network) => {
-    const highlightColor = "purple";
+    const highlightColor = "orange";
     const originalColor = "skyblue";
 
     let i = 0;

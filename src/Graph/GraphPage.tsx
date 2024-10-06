@@ -5,8 +5,8 @@ import TreeComponent from "./component/TreeComponent";
 const GraphPage: React.FC = () => {
   return (
     <>
-      <TreeComponent algorithm="bfs" />
-      <TreeComponent algorithm="gfs" />
+      <TreeComponent algorithm="BFS" />
+      <TreeComponent algorithm="GFS" />
     </>
   );
 };

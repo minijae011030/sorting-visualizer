@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import styles from "./style/main.module.css";
+import styles from "../asset/style/sorting.module.css";
 import code from "./code/code.json";
 
 import hljs from "highlight.js";

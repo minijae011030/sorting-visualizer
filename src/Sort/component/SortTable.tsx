@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid } from "recharts";
 
-import styles from "../style/main.module.css";
-import arrow from "../image/downarrow.png";
+import styles from "../../asset/style/sorting.module.css";
+import arrow from "../../asset/image/downarrow.png";
 
 interface SortTableProps {
   arraySize: number;
