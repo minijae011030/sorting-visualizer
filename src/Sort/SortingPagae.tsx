@@ -15,7 +15,7 @@ import insertionSort from "./method/insertionSort";
 import radixSort from "./method/radixSort";
 import shellSort from "./method/shellSort";
 
-const MainPage: React.FC = () => {
+const SortingPage: React.FC = () => {
   const [arraySize, setArraySize] = useState<number>(300);
   const [inputValue, setInputValue] = useState<string>("300");
   const [isMobileScreen, setIsMobileScreen] = useState<boolean>(false);
@@ -132,4 +132,4 @@ const MainPage: React.FC = () => {
   );
 };
 
-export default MainPage;
+export default SortingPage;
