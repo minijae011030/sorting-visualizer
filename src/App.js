@@ -1,8 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import MainPage from "./MainPage";
-import NetworkPage from "./Graph/NetworkPage";
 import SortingPage from "./Sort/SortingPagae";
+import GraphPage from "./Graph/GraphPage";
 
 function App() {
   return (
@@ -11,7 +11,7 @@ function App() {
         <Route path="/" element={<MainPage />} />
 
         <Route path="/sorting" element={<SortingPage />} />
-        <Route path="/graph" element={<NetworkPage />} />
+        <Route path="/graph" element={<GraphPage />} />
       </Routes>
     </Router>
   );

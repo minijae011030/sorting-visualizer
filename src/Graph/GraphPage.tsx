@@ -3,7 +3,7 @@ import { Network } from "vis-network";
 import { BFS } from "./method/BFS";
 import { DFS } from "./method/DFS";
 
-const NetworkPage: React.FC = () => {
+const GraphPage: React.FC = () => {
   const container = useRef<HTMLDivElement | null>(null);
   const [algorithm, setAlgorithm] = useState<"bfs" | "dfs">("bfs"); // 알고리즘 선택 상태
 
@@ -133,4 +133,4 @@ const NetworkPage: React.FC = () => {
   );
 };
 
-export default NetworkPage;
+export default GraphPage;
