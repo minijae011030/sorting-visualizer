@@ -6,7 +6,7 @@ const GraphPage: React.FC = () => {
   return (
     <>
       <TreeComponent algorithm="BFS" />
-      <TreeComponent algorithm="GFS" />
+      <TreeComponent algorithm="DFS" />
     </>
   );
 };
