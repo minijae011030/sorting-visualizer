@@ -1,4 +1,6 @@
-# Sorting Visualizer
+# Sorting Visualizer: 정렬을 알아보자!
+
+[프로젝트 링크: sorting.minjae-dev.com](https://sorting.minjae-dev.com/)
 
 Sorting Visualizer는 다양한 정렬 알고리즘의 작동 방식을 실시간 그래프와 C 코드를 통해 시각적으로 보여주는 웹 애플리케이션입니다.
 
